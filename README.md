@@ -10,21 +10,23 @@
 6. If some test cases will fail - create bug report for them
 7. Should be added README.md file with discription how to run your framework
 
-
 **Test case #1 (Subscribe with invalid email)**
+
 1. Go to the https://demo.prestashop.com/
-2. On the buttom of the page check that text near the email field equals 'Get our latest news and special sales'
-3. On the buttom of the page check that text under email field contains 'You may unsubscribe at any moment. For that purpose, please find my contact info in the legal notice.'
+2. On the buttom of the page check that text near the email field equals 'Get our latest news and
+   special sales'
+3. On the buttom of the page check that text under email field contains 'You may unsubscribe at any
+   moment. For that purpose, please find my contact info in the legal notice.'
 4. Check that all characters on 'SUBSCRIBE' button in upper case
 
-
 **Test case #2 (Check languages)**
+
 1. Go to the https://demo.prestashop.com/
 2. Check that 44 langueges exists in 'Language' dropdown in the top menu
 3. Check that 'Українська' language exist in dropdown
 
-
 **Test case #3 (Registration with valid data)**
+
 1. Go to the https://demo.prestashop.com/
 2. Click on 'Sign in' button at the right corner of the page
 3. Click on 'No account? Create one here' link
@@ -32,8 +34,8 @@
 5. Click on 'Save' button
 6. Check your name appear near cart button
 
-
 **Test case #4 (Registration with invalid data)**
+
 1. Go to the https://demo.prestashop.com/
 2. Click on 'Sign in' button at the right corner of the page
 3. Click on 'No account? Create one here' link
@@ -42,8 +44,8 @@
 6. Check that 'First name' higlighted in red
 7. Check that pop-up with text 'Invalid name' appear under field
 
-
 **Test case #5 (Check categories)**
+
 1. Go to the https://demo.prestashop.com/
 2. Hover mouse over 'CLOTHES'
 3. Check that 'MEN' and 'WOMEN' sub menu items appears
@@ -52,23 +54,23 @@
 6. Hover mouse over 'ART'
 7. Check that no any sub category appears
 
-
 **Test case #6 (Check popular products)**
+
 1. Go to the https://demo.prestashop.com/
 2. Check that 8 products exist in 'POPULAR PRODUCTS' section
 3. Check that every product has name
 4. Check that every product has price
 5. Check that all prices bigger than 0.00
 
-
 **Test case #7 (Price drop check)**
+
 1. Go to the https://demo.prestashop.com/
 2. At the bottom of the page click on 'Prices drop' link
 3. Check that every product has old and new price
 4. Check that promo price for every product calculates correct
 
-
 **Test case #8 (Sorting check)**
+
 1. Go to the https://demo.prestashop.com/
 2. Click on the 'All products >' under the 'POPULAR PRODUCTS' section
 3. Sort products as 'Name, A to Z'
@@ -80,8 +82,8 @@
 9. Sort products as 'Price, high to low'
 10. Check that sorting is correct
 
-
 **Test case #9 (Adding to cart)**
+
 1. Go to the https://demo.prestashop.com/
 2. In the search field enter 'Bear' and press 'Enter'
 3. On the 'SEARCH RESULTS' page click on 'Brown Bear Notebook'
@@ -92,8 +94,8 @@
 8. Check that correct 'Paper Type' and 'Quantity' is shown on the left side of the window
 9. Check that 'Total' calculated correct
 
-
 **Test case #10 (Checkout end-to-end)**
+
 1. Go to the https://demo.prestashop.com/
 2. In the search field enter 'Mug' and press 'Enter'
 3. On the 'SEARCH RESULTS' page click on 'Customizable Mug'
