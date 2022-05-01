@@ -79,6 +79,7 @@
       <version>1.7.30</version>
     </dependency>
     <!-- end lombok + logging -->
+
   </dependencies>
   <groupId>org.example</groupId>
 
