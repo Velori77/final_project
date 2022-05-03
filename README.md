@@ -41,7 +41,7 @@
 3. Click on 'No account? Create one here' link
 4. Fill 'First name' field with 'James8'
 5. Fill the rest fields valid data
-6. Check that 'First name' higlighted in red
+6. Check that 'First name' highlighted in red
 7. Check that pop-up with text 'Invalid name' appear under field
 
 **Test case #5 (Check categories)**

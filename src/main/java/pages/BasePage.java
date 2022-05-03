@@ -34,4 +34,9 @@ public abstract class BasePage implements IFrame {
     JavascriptExecutor js = (JavascriptExecutor) getDriver();
     js.executeScript("arguments[0].scrollIntoView();", el);
   }
+
+  public WebElement waitUntilClickable(WebElement element, int time) {
+    return new WebDriverWait(getDriver(), time)
+        .until(ExpectedConditions.elementToBeClickable(element));
+  }
 }

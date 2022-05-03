@@ -2,7 +2,6 @@ package pages;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -34,6 +33,9 @@ public class MainPage extends BasePage {
   @FindBy(xpath = "//input[@value='Subscribe']")
   private WebElement textOnSubscribeButton;
 
+  @FindBy(xpath = "//span[text()='Sign in']")
+  private WebElement signInButton;
+
   public MainPage() {
     PageFactory.initElements(getDriver(), this);
   }
@@ -53,8 +55,8 @@ public class MainPage extends BasePage {
     }
   }
 
-  public void handleSpinner(){
-    int i=0;
+  public void handleSpinner() {
+    int i = 0;
     while (waitForSpinner() && i++ <= 15) {//TODO use lib approach
       try {
         Thread.sleep(1000);
