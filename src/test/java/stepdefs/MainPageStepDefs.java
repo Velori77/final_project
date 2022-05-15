@@ -17,7 +17,7 @@ public class MainPageStepDefs extends BaseStepDefs {
 
   @Then("On the button of the page check that text near the email field equals {string}")
   public void onTheButtonOfThePageCheckThatTextNearTheEmailField(String expectedFieldText) {
-    scrollToElement(getMainPage().getNearEmailFieldText());
+    getMainPage().scrollToElement(getMainPage().getNearEmailFieldText());
     Assert.assertEquals("Unexpected text near the email field", //TODO use softAssert
         expectedFieldText, getMainPage().getNearEmailFieldText().getText());
   }

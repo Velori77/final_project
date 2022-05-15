@@ -1,19 +1,66 @@
 package stepdefs;
 
+import components.CategoriesMenu;
 import components.TopBar;
-import lombok.Getter;
-import pages.BasePage;
 import pages.CreateAccountPage;
 import pages.MainPage;
 import pages.MyAccountPage;
 import pages.SignInPage;
 
-@Getter
-public abstract class BaseStepDefs extends BasePage {
+public abstract class BaseStepDefs {
 
-  MainPage mainPage = new MainPage();
-  TopBar topBar = new TopBar();
-  SignInPage signInPage = new SignInPage();
-  CreateAccountPage createAccountPage = new CreateAccountPage();
-  MyAccountPage myAccountPage = new MyAccountPage();
+  ThreadLocal<MainPage> mainPage = new ThreadLocal<>();
+  ThreadLocal<TopBar> topBar = new ThreadLocal<>();
+  ThreadLocal<SignInPage> signInPage = new ThreadLocal<>();
+  ThreadLocal<CreateAccountPage> createAccountPage = new ThreadLocal<>();
+  ThreadLocal<MyAccountPage> myAccountPage = new ThreadLocal<>();
+  ThreadLocal<CategoriesMenu> categoriesMenu = new ThreadLocal<>();
+
+  public MainPage getMainPage() {
+    if (mainPage.get() == null) {
+      mainPage.set(new MainPage());
+    }
+
+    return mainPage.get();
+  }
+
+  public TopBar getTopBar() {
+    if (topBar.get() == null) {
+      topBar.set(new TopBar());
+    }
+
+    return topBar.get();
+  }
+
+  public SignInPage getSignInPage() {
+    if (signInPage.get() == null) {
+      signInPage.set(new SignInPage());
+    }
+
+    return signInPage.get();
+  }
+
+  public CreateAccountPage getCreateAccountPage() {
+    if (createAccountPage.get() == null) {
+      createAccountPage.set(new CreateAccountPage());
+    }
+
+    return createAccountPage.get();
+  }
+
+  public MyAccountPage getMyAccountPage() {
+    if (myAccountPage.get() == null) {
+      myAccountPage.set(new MyAccountPage());
+    }
+
+    return myAccountPage.get();
+  }
+
+  public CategoriesMenu getCategoriesMenu() {
+    if (categoriesMenu.get() == null) {
+      categoriesMenu.set(new CategoriesMenu());
+    }
+
+    return categoriesMenu.get();
+  }
 }

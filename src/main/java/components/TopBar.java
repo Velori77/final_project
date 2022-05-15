@@ -51,7 +51,6 @@ public class TopBar {
 
       return lngItemText.equals(lngToCheck);
     }
-
     return false;
   }
 }

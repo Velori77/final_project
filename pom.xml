@@ -3,20 +3,51 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>final-project-main-academy</artifactId>
+
+  <properties>
+    <aspectj.version>1.9.6</aspectj.version>
+  </properties>
+
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <configuration>
+            <parallel>all</parallel>
+            <threadCount>2</threadCount>
+            <perCoreThreadCount>false</perCoreThreadCount>
+            <testFailureIgnore>true</testFailureIgnore>
+            <includes>
+              <include>*/Runner.java</include>
+            </includes>
+            <argLine>
+              -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+            </argLine>
+
             <systemProperties>
               <property>
                 <name>browser</name>
                 <value>${browser}</value>
               </property>
+              <property>
+                <name>isMultiple</name>
+                <value>${isMultiple}</value>
+              </property>
+              <property>
+                <name>allure.results.directory</name>
+                <value>${project.build.directory}/reports/allure-results</value>
+              </property>
             </systemProperties>
             <testFailureIgnore>true</testFailureIgnore>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjweaver</artifactId>
+              <version>${aspectj.version}</version>
+            </dependency>
+          </dependencies>
           <groupId>org.apache.maven.plugins</groupId>
           <version>3.0.0-M5</version>
         </plugin>
@@ -85,6 +116,20 @@
       <groupId>org.assertj</groupId>
       <scope>test</scope>
       <version>3.18.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-junit4</artifactId>
+      <version>2.13.7</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-java-commons</artifactId>
+      <version>2.13.7</version>
+      <scope>compile</scope>
     </dependency>
 
   </dependencies>
