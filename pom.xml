@@ -5,41 +5,63 @@
   <artifactId>final-project-main-academy</artifactId>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <allure.junit4.version>2.14.0</allure.junit4.version>
+    <allure.cucumber6.version>6.9.0</allure.cucumber6.version>
+    <allure.maven.report.version>2.0.1</allure.maven.report.version>
     <aspectj.version>1.9.6</aspectj.version>
+
+    <maven.cucumber.reporting.version>3.12.0</maven.cucumber.reporting.version>
   </properties>
 
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>io.qameta.allure</groupId>
+          <artifactId>allure-maven</artifactId>
+          <configuration>
+            <reportVersion>${allure.maven.report.version}</reportVersion>
+          </configuration>
+        </plugin>
+        <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <configuration>
-            <parallel>all</parallel>
-            <threadCount>2</threadCount>
-            <perCoreThreadCount>false</perCoreThreadCount>
-            <testFailureIgnore>true</testFailureIgnore>
-            <includes>
-              <include>*/Runner.java</include>
-            </includes>
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
+            <properties>
+              <property>
+                <name>allure.results.directory</name>
+                <value>${project.build.directory}/reports/allure-results</value>
+              </property>
+              <property>
+                <name>listener</name>
+                <value>io.qameta.allure.junit4.AllureJunit4</value>
+              </property>
+            </properties>
+
+            <includes>
+              <include>*/Runner.java</include>
+            </includes>
+
+            <parallel>methods</parallel>
+            <threadCount>${threadCount}</threadCount>
+            <perCoreThreadCount>false</perCoreThreadCount>
+            <testFailureIgnore>false</testFailureIgnore>
 
             <systemProperties>
               <property>
                 <name>browser</name>
                 <value>${browser}</value>
+                mvn clean test -DthreadCount=1
               </property>
               <property>
-                <name>isMultiple</name>
-                <value>${isMultiple}</value>
-              </property>
-              <property>
-                <name>allure.results.directory</name>
-                <value>${project.build.directory}/reports/allure-results</value>
+                <name>threadCount</name>
+                <value>${threadCount}</value>
               </property>
             </systemProperties>
-            <testFailureIgnore>true</testFailureIgnore>
+
           </configuration>
           <dependencies>
             <dependency>
@@ -61,9 +83,31 @@
           <groupId>org.apache.maven.plugins</groupId>
           <version>3.8.1</version>
         </plugin>
+
+        <!-- maven-cucumber-reporting -->
+        <plugin>
+          <groupId>net.masterthought</groupId>
+          <artifactId>maven-cucumber-reporting</artifactId>
+          <version>${maven.cucumber.reporting.version}</version>
+          <executions>
+            <execution>
+              <id>cucumber-report</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>generate</goal>
+              </goals>
+              <configuration>
+                <buildNumber>1</buildNumber>
+                <checkBuildResult>false</checkBuildResult>
+                <outputDirectory>${project.build.directory}</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
+
   <dependencies>
     <dependency>
       <artifactId>webdrivermanager</artifactId>
@@ -74,8 +118,7 @@
     <dependency>
       <artifactId>junit</artifactId>
       <groupId>junit</groupId>
-      <scope>test</scope>
-      <version>4.13.1</version>
+      <version>4.13.2</version>
     </dependency>
 
     <dependency>
@@ -85,7 +128,7 @@
     </dependency>
 
     <dependency>
-      <artifactId>cucumber-junit</artifactId>
+        <artifactId>cucumber-junit</artifactId>
       <groupId>io.cucumber</groupId>
       <version>6.9.0</version>
     </dependency>
@@ -106,34 +149,31 @@
     <dependency>
       <artifactId>slf4j-log4j12</artifactId>
       <groupId>org.slf4j</groupId>
-      <scope>test</scope>
       <version>1.7.30</version>
     </dependency>
     <!-- end lombok + logging -->
-
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-junit4</artifactId>
+      <version>${allure.junit4.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.masterthought</groupId>
+      <artifactId>maven-cucumber-reporting</artifactId>
+      <version>${maven.cucumber.reporting.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber-jvm</artifactId>
+      <version>2.17.3</version>
+    </dependency>
     <dependency>
       <artifactId>assertj-core</artifactId>
       <groupId>org.assertj</groupId>
       <scope>test</scope>
       <version>3.18.1</version>
     </dependency>
-
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-junit4</artifactId>
-      <version>2.13.7</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-java-commons</artifactId>
-      <version>2.13.7</version>
-      <scope>compile</scope>
-    </dependency>
-
   </dependencies>
-
   <groupId>org.example</groupId>
   <modelVersion>4.0.0</modelVersion>
   <version>1.0-SNAPSHOT</version>

@@ -34,7 +34,7 @@ public class TopBar {
     log.info("Check amount languages");
 
     return getDriver().findElements(By.xpath(
-            "//ul[@class='dropdown-menu hidden-sm-down']//li"))//TODO add element to pageFactory
+            "//ul[@class='dropdown-menu hidden-sm-down']//li"))
         .size();
   }
 

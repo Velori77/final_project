@@ -29,7 +29,7 @@ public abstract class BasePage implements IFrame {
   }
 
   public static void scrollToElement(WebElement el) {
-    log.info("Scroll page to element: {}", el);//TODO print el.locator
+    log.info("Scroll page to element: {}", el);
     waitUntilVisible(el, 10);
     JavascriptExecutor js = (JavascriptExecutor) getDriver();
     js.executeScript("arguments[0].scrollIntoView();", el);

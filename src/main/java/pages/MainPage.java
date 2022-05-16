@@ -57,7 +57,7 @@ public class MainPage extends BasePage {
 
   public void handleSpinner() {
     int i = 0;
-    while (waitForSpinner() && i++ <= 15) {//TODO use lib approach
+    while (waitForSpinner() && i++ <= 15) {
       try {
         Thread.sleep(1000);
       } catch (InterruptedException e) {

@@ -6,6 +6,7 @@ import org.openqa.selenium.TakesScreenshot;
 import pages.BasePage;
 
 public class ScreenShot {
+
   @Attachment(value = "step_scr", type = "image/png")
   public static byte[] makeScreenshot() {
     return ((TakesScreenshot) BasePage

@@ -18,14 +18,14 @@ public class MainPageStepDefs extends BaseStepDefs {
   @Then("On the button of the page check that text near the email field equals {string}")
   public void onTheButtonOfThePageCheckThatTextNearTheEmailField(String expectedFieldText) {
     getMainPage().scrollToElement(getMainPage().getNearEmailFieldText());
-    Assert.assertEquals("Unexpected text near the email field", //TODO use softAssert
+    Assert.assertEquals("Unexpected text near the email field",
         expectedFieldText, getMainPage().getNearEmailFieldText().getText());
   }
 
   @And("On the button of the page check that text under email field contains {string}")
   public void onTheButtonOfThePageCheckThatTextUnderEmailFieldContainsYouMayUnsubscribe(
       String expectedFieldText) {
-    Assert.assertEquals("Unexpected text under the email field", //TODO use softAssert
+    Assert.assertEquals("Unexpected text under the email field",
         expectedFieldText, getMainPage().getUnderEmailFieldText().getText());
   }
 
