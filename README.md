@@ -3,7 +3,7 @@
     - Junit
     - Cucumber
     - Lombok
-    - Allure
+    - Allure + net.masterthought:maven-cucumber-reporting
 
 #### How to start sequential test execution by maven:
 ```mvn clean test -DthreadCount=1```
@@ -15,6 +15,6 @@
 ```mvn clean test -Dbrowser="firefox"```
 
 #### Generate report by Allure after test execution:
-```allure serve allure-results```
+```mvn allure::serve```
 
 
